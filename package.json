@@ -1,39 +1,36 @@
 {
   "name": "kyberswap-sdk",
-  "type": "module",
   "version": "0.0.2",
+  "author": "buildstation <core@buildstation.org>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buildstationorg/kyberswap-sdk.git"
+  },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "description": "",
+  "devDependencies": {
+    "bun-plugin-dts": "^0.3.0",
+    "@types/bun": "^1.1.10"
+  },
   "exports": {
     "types": "./dist/index.d.ts",
     "import": "./dist/index.js",
     "require": "./dist/index.cjs"
   },
-  "scripts": {
-    "build": "bun run build.ts",
-    "prepublishOnly": "bun run build"
-  },
+  "bugs": "https://github.com/buildstationorg/kyberswap-sdk/issues",
+  "description": "",
   "files": [
     "dist"
   ],
+  "homepage": "https://github.com/buildstationorg/kyberswap-sdk#readme",
   "keywords": [
     "bun"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/buildstationorg/kyberswap-sdk#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/buildstationorg/kyberswap-sdk.git"
+  "scripts": {
+    "build": "bun run build.ts",
+    "prepublishOnly": "bun run build"
   },
-  "bugs": "https://github.com/buildstationorg/kyberswap-sdk/issues",
-  "author": "buildstation <core@buildstation.org>",
-  "devDependencies": {
-    "bun-plugin-dts": "^0.3.0",
-    "@types/bun": "^1.1.10"
-  },
-  "dependencies": {
-    "viem": "^2.30.5"
-  }
+  "type": "module",
+  "types": "./dist/index.d.ts"
 }
