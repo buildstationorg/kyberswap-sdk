@@ -35,3 +35,25 @@ export enum ChainIdentifier {
   BERACHAIN = 'berachain',
   RONIN = 'ronin',
 } 
+
+export enum ChargeFeeBy {
+  CURRENCY_IN = 'currency_in',
+  CURRENCY_OUT = 'currency_out',
+}
+
+export interface GetSwapRouteParams {
+  chainName: ChainIdentifier;
+  tokenIn: string;
+  tokenOut: string;
+  amountIn: string;
+  includedSources?: string[];
+  excludedSources?: string[];
+  onlyScalableSources?: boolean;
+  onlySinglePath?: boolean;
+  gasInclude?: boolean;
+  gasLimit?: string;
+  feeAmount?: string;
+  chargeFeeBy?: ChargeFeeBy;
+  isInBps?: boolean;
+  feeReceiver?: string;
+}
