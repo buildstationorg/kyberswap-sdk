@@ -57,3 +57,53 @@ export interface GetSwapRouteParams {
   isInBps?: boolean;
   feeReceiver?: string;
 }
+
+export interface ExtraFee {
+  feeAmount: string;
+  chargeFeeBy?: ChargeFeeBy;
+  isInBps?: boolean;
+  feeReceiver: string;
+}
+
+export interface Route {
+  pool: string;
+  tokenIn: string;
+  tokenOut: string;
+  swapAmount: string;
+  amountOut: string;
+  exchange: string;
+  poolType: string;
+  poolExtra: string;
+  extra: string;
+}
+
+export interface RouteSummary {
+  tokenIn: string;
+  amountIn: string;
+  amountInUsd: string;
+  tokenOut: string;
+  amountOut: string;
+  amountOutUsd: string;
+  gas: string;
+  gasPrice: string;
+  gasUsd: string;
+  extraFee: string;
+  route: Route[];
+  routeId: string;
+  checksum: string;
+  timestamp: string;
+}
+
+export interface PostSwapRouteForEncodedDataParams {
+  chainName: ChainIdentifier;
+  routeSummary: RouteSummary;
+  sender: string;
+  recipient: string;
+  permit?: string;
+  deadline?: number;
+  slippageTolerance?: number;
+  ignoreCappedSlippage?: boolean;
+  enableGasEstimation?: boolean;
+  source?: string;
+  referrer?: string;
+}
