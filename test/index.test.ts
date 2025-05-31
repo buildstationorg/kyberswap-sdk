@@ -15,9 +15,6 @@ describe('KyberSwap', () => {
 
     const result = await kyberSwap.getSwapRoute(params);
 
-    // console log the full nested objects in terminal
-    console.log(result, null, 2);
-
     // Verify the top-level response structure
     expect(result).toHaveProperty('code', 0);
     expect(result).toHaveProperty('message', 'successfully');
@@ -81,9 +78,6 @@ describe('KyberSwap', () => {
 
     const swapRouteResult = await kyberSwap.getSwapRoute(swapRouteParams);
 
-    // console log the full nested objects in terminal
-    console.log(swapRouteResult, null, 2);
-
     expect(swapRouteResult).toHaveProperty('data');
     expect(swapRouteResult.data).toHaveProperty('routeSummary');
 
@@ -96,9 +90,6 @@ describe('KyberSwap', () => {
     };
 
     const encodedDataResult = await kyberSwap.postSwapRouteForEncodedData(postSwapParams);
-
-    // console log the full nested objects in terminal
-    console.log(encodedDataResult, null, 2);
 
     expect(encodedDataResult).toHaveProperty('code', 0);
     expect(encodedDataResult).toHaveProperty('message', 'successfully');
