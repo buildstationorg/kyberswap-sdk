@@ -3,11 +3,11 @@
 
 ## Install
 
-```bash
+```console
 npm i kyberswap-sdk
 ```
 
-```bash
+```console
 bun add kyberswap-sdk
 ```
 
@@ -31,7 +31,7 @@ console.log(swapRoute);
 ```
 Output
 
-```bash
+```console
 {
   code: 0,
   message: "successfully",
