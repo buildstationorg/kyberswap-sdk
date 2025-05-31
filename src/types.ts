@@ -98,7 +98,7 @@ export interface RouteSummary {
   gasPrice: string;
   gasUsd: string;
   extraFee: string;
-  route: Route[];
+  route: Route[][];
   routeId: string;
   checksum: string;
   timestamp: string;
@@ -116,4 +116,25 @@ export interface PostSwapRouteForEncodedDataParams {
   enableGasEstimation?: boolean;
   source?: string;
   referrer?: string;
+}
+
+export interface PostSwapRouteForEncodedDataResponse {
+  code: number;
+  message: string;
+  data: SwapEncodedData;
+  requestId: string;
+}
+
+export interface SwapEncodedData {
+  amountIn: string;
+  amountInUsd: string;
+  amountOut: string;
+  amountOutUsd: string;
+  gas: string;
+  gasUsd: string;
+  additionalCostUsd?: string;
+  additionalCostMessage?: string;
+  data: string;
+  routerAddress: string;
+  transactionValue: string;
 }

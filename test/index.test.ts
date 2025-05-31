@@ -67,4 +67,55 @@ describe('KyberSwap', () => {
     // Verify the router address
     expect(result.data).toHaveProperty('routerAddress');
   });
-}); 
+
+  it('should post swap route for encoded data successfully', async () => {
+    const kyberSwap = new KyberSwap();
+    
+    // First, get a swap route
+    const swapRouteParams = {
+      chainName: ChainIdentifier.ETHEREUM,
+      tokenIn: NATIVE_TOKEN_ADDRESS,
+      tokenOut: '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48', // USDC
+      amountIn: '1000000000000000000', // 1 ETH
+    };
+
+    const swapRouteResult = await kyberSwap.getSwapRoute(swapRouteParams);
+
+    // console log the full nested objects in terminal
+    console.log(swapRouteResult, null, 2);
+
+    expect(swapRouteResult).toHaveProperty('data');
+    expect(swapRouteResult.data).toHaveProperty('routeSummary');
+
+    // Then use the route data to get encoded data
+    const postSwapParams = {
+      chainName: ChainIdentifier.ETHEREUM,
+      routeSummary: swapRouteResult.data.routeSummary,
+      sender: '0xd06c478DbfE22c014EA0E76A0BB216f346e2EbDB', // Example sender address
+      recipient: '0xd06c478DbfE22c014EA0E76A0BB216f346e2EbDB', // Example recipient address
+    };
+
+    const encodedDataResult = await kyberSwap.postSwapRouteForEncodedData(postSwapParams);
+
+    // console log the full nested objects in terminal
+    console.log(encodedDataResult, null, 2);
+
+    expect(encodedDataResult).toHaveProperty('code', 0);
+    expect(encodedDataResult).toHaveProperty('message', 'successfully');
+    expect(encodedDataResult).toHaveProperty('data');
+    expect(encodedDataResult.data).toHaveProperty('amountIn');
+    expect(encodedDataResult.data).toHaveProperty('amountInUsd');
+    expect(encodedDataResult.data).toHaveProperty('amountOut');
+    expect(encodedDataResult.data).toHaveProperty('amountOutUsd');
+    expect(encodedDataResult.data).toHaveProperty('gas');
+    expect(encodedDataResult.data).toHaveProperty('gasUsd');
+    expect(encodedDataResult.data).toHaveProperty('additionalCostUsd');
+    expect(encodedDataResult.data).toHaveProperty('additionalCostMessage');
+    expect(encodedDataResult.data).toHaveProperty('data');
+    expect(encodedDataResult.data).toHaveProperty('routerAddress');
+    expect(encodedDataResult.data).toHaveProperty('transactionValue');
+    expect(encodedDataResult).toHaveProperty('requestId');
+  });
+});
+
+

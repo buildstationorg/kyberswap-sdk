@@ -1,4 +1,4 @@
-import { GetSwapRouteParams, PostSwapRouteForEncodedDataParams } from "./types";
+import { GetSwapRouteParams, GetSwapRouteResponse, PostSwapRouteForEncodedDataParams, PostSwapRouteForEncodedDataResponse } from "./types";
 import { API_ROUTES, KYBERSWAP_BASE_URL } from "./constants";
 
 export class KyberSwap {
@@ -25,7 +25,7 @@ export class KyberSwap {
       .join("&");
   }
 
-  async getSwapRoute(params: GetSwapRouteParams) {
+  async getSwapRoute(params: GetSwapRouteParams): Promise<GetSwapRouteResponse> {
     const queryString = this.objectToQueryString(params);
     const url = `${KYBERSWAP_BASE_URL}${params.chainName}${API_ROUTES.GET_SWAP_ROUTE}?${queryString}`;
 
@@ -41,7 +41,7 @@ export class KyberSwap {
     return response.json();
   }
 
-  async postSwapRouteForEncodedData(params: PostSwapRouteForEncodedDataParams) {
+  async postSwapRouteForEncodedData(params: PostSwapRouteForEncodedDataParams): Promise<PostSwapRouteForEncodedDataResponse> {
     const url = `${KYBERSWAP_BASE_URL}${params.chainName}${API_ROUTES.POST_SWAP_ROUTE_FOR_ENCODED_DATA}`;
 
     const response = await fetch(url, {
