@@ -58,6 +58,16 @@ export interface GetSwapRouteParams {
   feeReceiver?: string;
 }
 
+export interface GetSwapRouteResponse {
+  code: number;
+  message: string;
+  data: {
+    routeSummary: RouteSummary;
+    routerAddress: string;
+  };
+  requestId: string;
+}
+
 export interface ExtraFee {
   feeAmount: string;
   chargeFeeBy?: ChargeFeeBy;
